@@ -1,0 +1,15 @@
+{
+    "name": "devnix/prestablocks",
+    "description": "Opinionated framework to help building prestashop modules faster",
+    "type": "library",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Pablo Largo Mohedano",
+            "email": "devnix.code@gmail.com",
+            "role" : "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
