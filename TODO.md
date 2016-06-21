@@ -9,5 +9,5 @@
 
 ## 0.1
  - [ ]	Wrapper for ModuleFrontController
- - [ ]	Wrapper for ModuleAdminController
+ - [x]	Wrapper for ModuleAdminController
  - [ ]	Start documenting classes
