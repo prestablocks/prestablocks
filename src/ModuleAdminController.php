@@ -14,14 +14,13 @@ use \Tools;
 
 class ModuleAdminController extends \ModuleAdminController {
 	 public function __construct() {
+	 	parent::__construct();
+
 	 	if (!empty(Tools::getValue('action'))) {
 	 		$method = Tools::getValue('action').'Action';
 	 		if (method_exists($this, $method)) {
 	 			$this->$method();
 	 		}
-
 	 	}
-
-	 	parent::__construct();
 	 }
 }
