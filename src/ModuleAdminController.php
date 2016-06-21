@@ -10,6 +10,8 @@ namespace Devnix\Prestablocks;
  * @author Pablo Largo Mohedano <devnix.code@gmail.com>
  */
 
+use \Tools;
+
 class ModuleAdminController extends \ModuleAdminController {
 	 public function __construct() {
 	 	if (!empty(Tools::getValue('action'))) {
