@@ -28,7 +28,7 @@ class ObjectModel extends \ObjectModel
         return Db::getInstance()->executeS($sql);
     }
 
-    /**
+    /*
      * return a column in the tablerelative to the ObjectModel.
      * this method uses the $definition property of the ObjectModel,
      * with some extra properties.
@@ -147,7 +147,7 @@ class ObjectModel extends \ObjectModel
 
         $sql = trim($sql, ',');
         $sql .= ')';
-        
+
         if (!Db::getInstance()->execute($sql)) {
             Tools::displayError(Db::getInstance()->getLink()->errorInfo()[2]);
             return false;
@@ -158,13 +158,19 @@ class ObjectModel extends \ObjectModel
 
     public function removeDatabase() {
         $definition = ObjectModel::getDefinition($this);
-        $sql = 'DROP TABLE '. _DB_PREFIX_ . $definition['table'];
 
-        if (!Db::getInstance()->execute($sql)) {
+        if (Db::getInstance()->getValue('SELECT count(*) FROM information_schema.tables WHERE table_schema = \''.$definition['table'].'\'') > 0) {
+          $sql = 'DROP TABLE '. _DB_PREFIX_ . $definition['table'];
+
+          if (!Db::getInstance()->execute($sql)) {
             Tools::displayError(Db::getInstance()->getLink()->errorInfo()[2]);
             return false;
-        } else {
+          } else {
             return true;
+          }
         }
+
+        return true;
+
     }
 }

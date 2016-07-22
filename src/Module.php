@@ -2,7 +2,7 @@
 
 /**
  * Use this class to create the module class instead of Prestashop's one to use a better API.
- * 
+ *
  * @author Pablo Largo Mohedano <devnix.code@gmail.com>
  */
 
@@ -38,7 +38,7 @@ class Module extends \Module {
     }
 
     protected function getModels() {
-        foreach (glob(__DIR__.'/../models/*.php') as $path) {
+        foreach (glob(_PS_MODULE_DIR_.$this->name.'/models/*.php') as $path) {
             require_once $path;
             $className = /*'Models\\'.*/pathinfo($path, PATHINFO_FILENAME);
 
@@ -73,6 +73,7 @@ class Module extends \Module {
      * ]
      * </code>
      * @param int $id_parent Id of the parent tab. Defaults to 0 (first tab). You can hide the tab using -1
+     * @return bool
      */
 
     public function addTab($tabs, $id_parent = 0) {
@@ -82,14 +83,14 @@ class Module extends \Module {
             $tabModel->active     = $tab['active'];
             $tabModel->class_name = $tab['className'];
             $tabModel->id_parent  = $id_parent;
-     
+
             //tab text in each language
             foreach (Language::getLanguages(true) as $lang) {
                 $tabModel->name[$lang['id_lang']] = $tab['name'];
             }
-     
+
             $tabModel->add();
-     
+
             //submenus of the tab
             if (isset($tab['childs']) && is_array($tab['childs'])) {
                 $this->addTab($tab['childs'], Tab::getIdFromClassName($tab['className']));
@@ -102,6 +103,7 @@ class Module extends \Module {
      * @since 1.0
      * Remove a tab and its childrens from the backoffice menu
      * @param array $tabs Array of tabs information
+     * @return bool
      */
 
     protected function removeTab($tabs) {
@@ -111,12 +113,12 @@ class Module extends \Module {
                 $tabModel = new Tab($id_tab);
                 $tabModel->delete();
             }
-     
+
             if (isset($tab["childs"]) && is_array($tab["childs"])) {
                 $this->removeTab($tab["childs"]);
             }
         }
-     
+
         return true;
     }
 
