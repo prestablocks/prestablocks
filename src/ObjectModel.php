@@ -96,21 +96,21 @@ class ObjectModel extends \ObjectModel
         {
             //column exists in database
             $exists = false;
+
             foreach ($columns as $column)
             {
-                //p($column);
                 if ($column['COLUMN_NAME'] === $column_name)
                 {
                     $exists = true;
-                    break;
                 }
             }
 
             if (!$exists) {
                 $this->createColumn($column_name, $column_definition);
             }
-            return true;
         }
+
+        return true;
     }
 
     /**
