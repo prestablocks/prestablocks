@@ -159,7 +159,7 @@ class ObjectModel extends \ObjectModel
     public function removeDatabase() {
         $definition = ObjectModel::getDefinition($this);
 
-        if (Db::getInstance()->getValue('SELECT count(*) FROM information_schema.tables WHERE table_schema = \''.$definition['table'].'\'') > 0) {
+        if (Db::getInstance()->getValue('SELECT count(*) FROM information_schema.tables WHERE TABLE_SCHEMA LIKE \''._DB_NAME_.'\' AND TABLE_NAME = \''._DB_PREFIX_.$definition['table'].'\'') > 0) {
           $sql = 'DROP TABLE '. _DB_PREFIX_ . $definition['table'];
 
           if (!Db::getInstance()->execute($sql)) {

@@ -15,6 +15,7 @@ if (!defined('_PS_VERSION_'))
     exit;
 
 class Module extends \Module {
+    protected $removeDatabaseOnUninstall = false;
 
     public function install() {
         $return = true;
@@ -30,8 +31,10 @@ class Module extends \Module {
     public function uninstall() {
         $return = true;
 
-        foreach ($this->getModels() as $model) {
-            $return = $return && $model->removeDatabase();
+        if ($this->removeDatabaseOnUninstall) {
+            foreach ($this->getModels() as $model) {
+              $return = $return && $model->removeDatabase();
+            }
         }
 
         return  parent::uninstall() && $return;
