@@ -55,15 +55,15 @@ class MyCustomModule extends Devnix\Prestablocks\Module {
     return
       parent::install() &&
       $this->addTab($this->tabs, -1) &&   // Implemented function by Prestablocks. Seemed like a standard in a lot of examples, and it's a repeated code never implemented.
-      $this->registerHook('actionDispatcher');
+      $this->registerHook('moduleRoutes');
   }
 
   public function uninstall() {
     return parent::uninstall() && $this->removeTab($this->tabs);
   }
 
-  public function hookActionDispatcher() {
-    require_once __DIR__.'/vendor/autoload.php';            // Must figure a better way to autoload your module dependencies on your custom classes
+  public function hookModuleRoutes() {
+    require_once __DIR__.'/vendor/autoload.php'; // This way you can autoload dependencies on all your custom classes
   }
 
 }
