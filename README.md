@@ -2,6 +2,10 @@
 
 [![Gitter](https://badges.gitter.im/DevNIX/prestablocks.svg)](https://gitter.im/DevNIX/prestablocks?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
+_Hello, module developer! Besides this software is in a early phase, it has a couple of features that I need on my everyday module development. I would love to have some feedback from testers and production users. If stability worries you, I can promise you that I will fix inmediatly every bug posted in the Github's tracker. Thank you for your time :D_
+
+_Comming soon: Twitter account for following updates easily_
+
 Opinionated framework to help building Prestashop modules faster on early development state in experimental phase.
 
 ## Example module constructor (may change during development)
