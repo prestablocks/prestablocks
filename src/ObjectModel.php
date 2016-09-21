@@ -149,7 +149,7 @@ class ObjectModel extends \ObjectModel
         $sql .= ')';
 
         if (!Db::getInstance()->execute($sql)) {
-            Tools::displayError(Db::getInstance()->getLink()->errorInfo()[2]);
+            throw new \PrestaShopDatabaseException(Db::getInstance()->getLink()->errorInfo()[2]);
             return false;
         } else {
             return true;
