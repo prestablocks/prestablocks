@@ -171,6 +171,5 @@ class ObjectModel extends \ObjectModel
         }
 
         return true;
-
     }
 }
