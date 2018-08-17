@@ -152,7 +152,3 @@ class Person extends ObjectModel {    // Loading the Prestablocks' ObjectModel (
 ```
 
 Now, each time you add a new field to your model, you just have to press `Reset`, and enjoy how magic works!
-
-Proudly sponsored by
-
-[![Ecomputer](http://www.ecomputer.es/imagenes/empresa/descargas/logotipo_ecomputer_alargado_azul_min.jpg)](http://www.ecomputer.es)
